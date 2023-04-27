@@ -1,7 +1,9 @@
+import { NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Movie } from '../movie.model';
 
 @Component({
+  standalone: true,
   selector: 'app-movie-card',
   template: `
     <article class="bg-white rounded-lg h-full">
@@ -28,6 +30,7 @@ import { Movie } from '../movie.model';
       </div>
     </article>
   `,
+  imports: [NgFor],
 })
 export class MovieCardComponent {
   @Input() movie: Movie | undefined;

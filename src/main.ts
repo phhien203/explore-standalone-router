@@ -5,13 +5,17 @@ import { AppComponent } from './app/app.component';
 const routes: Routes = [
   {
     path: 'movies',
-    loadChildren: () =>
-      import('./app/features/movies/movies.module').then((m) => m.MoviesModule),
+    loadComponent: () =>
+      import('./app/features/movies/movies.component').then(
+        (m) => m.MoviesComponent
+      ),
   },
   {
     path: 'shows',
-    loadChildren: () =>
-      import('./app/features/shows/shows.module').then((m) => m.ShowsModule),
+    loadComponent: () =>
+      import('./app/features/shows/shows.component').then(
+        (m) => m.ShowsComponent
+      ),
   },
   {
     path: '**',

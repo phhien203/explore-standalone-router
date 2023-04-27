@@ -1,7 +1,9 @@
+import { NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Show } from '../show.model';
 
 @Component({
+  standalone: true,
   selector: 'app-show-card',
   template: `
     <article class="bg-white rounded-lg">
@@ -27,6 +29,7 @@ import { Show } from '../show.model';
       </div>
     </article>
   `,
+  imports: [NgFor],
 })
 export class ShowCardComponent {
   @Input() show: Show | undefined;
