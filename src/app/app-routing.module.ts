@@ -7,6 +7,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/movies/movies.module').then((m) => m.MoviesModule),
   },
+  {
+    path: 'shows',
+    loadChildren: () =>
+      import('./features/shows/shows.module').then((m) => m.ShowsModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'shows',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
