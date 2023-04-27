@@ -1,7 +1,25 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { Routes, provideRouter } from '@angular/router';
+import { AppComponent } from './app/app.component';
 
-import { AppModule } from './app/app.module';
+const routes: Routes = [
+  {
+    path: 'movies',
+    loadChildren: () =>
+      import('./app/features/movies/movies.module').then((m) => m.MoviesModule),
+  },
+  {
+    path: 'shows',
+    loadChildren: () =>
+      import('./app/features/shows/shows.module').then((m) => m.ShowsModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'shows',
+    pathMatch: 'full',
+  },
+];
 
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes)],
+}).catch((err) => console.error(err));
